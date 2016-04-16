@@ -1,21 +1,21 @@
-import * as ACTION_TYPES from './actionTypes'
+import { ACTION_TYPES } from './actionTypes'
 
 export function requestUserLogin(){
   return {
-    type: ACTIONS.REQUEST_USER_LOGIN
+    type: ACTION_TYPES.REQUEST_USER_LOGIN
   }
 };
 
 export function userLoginSuccessful(user) {
   return {
-    type: ACTIONS.USER_LOGIN_SUCCESSFUL,
+    type: ACTION_TYPES.USER_LOGIN_SUCCESSFUL,
     user
   }
 }
 
 export function userLoginFailure(err) {
   return {
-    type: ACTIONS.USER_LOGIN_FAILED,
+    type: ACTION_TYPES.USER_LOGIN_FAILED,
     error: err
   }
 }
