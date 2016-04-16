@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import { Link } from 'react-router'
 
 const Header = (props) => {
   return (
@@ -24,7 +25,7 @@ const Header = (props) => {
             <div className="row">
               <div className="col-sm-4">
                 <div className="logo pull-left">
-                  <a href="index.html"><img src="images/home/logo.png" alt /></a>
+                  <Link to="/"><img src="images/home/logo.png" alt /></Link>
                 </div>
                 <div className="btn-group pull-right">
                 </div>
@@ -32,7 +33,7 @@ const Header = (props) => {
               <div className="col-sm-8">
                 <div className="shop-menu pull-right">
                   <ul className="nav navbar-nav">
-                    <li><a href="login.html"><i className="fa fa-lock" /> Login</a></li>
+                    <li><a href="#" onClick={(e) =>  props.onClickLogin(e)}><i className="fa fa-lock" /> Login</a></li>
                   </ul>
                 </div>
               </div>

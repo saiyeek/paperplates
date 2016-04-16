@@ -10,14 +10,15 @@ class App extends React.Component {
     this.handleUserLogin = this.handleUserLogin.bind(this)
   }
 
-  handleUserLogin() {
+  handleUserLogin(e) {
+    e.preventDefault();
     this.props.requestUserLogin();
   }
 
   render () {
     return (
       <div>
-        <Header />
+        <Header onClickLogin={this.handleUserLogin}/>
           <h1>App Wrapper</h1>
           <Link to="/about">About</Link>
           <button onClick={()=> this.handleUserLogin()} > Login</button>
