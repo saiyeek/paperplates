@@ -1,1 +1,5 @@
 node_modules/
+<<<<<<< HEAD
+=======
+dist/bundle.js
+>>>>>>> master
