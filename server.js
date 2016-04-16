@@ -11,7 +11,14 @@ var authRoutes = require('./app/routes/auth');
 require('./app/config/passport')(passport);
 
 var app = new express();
-
+var baucis;
+try {
+  baucis = require('baucis');
+}catch(e){
+  console.err(e, e.stack);
+}
+var models = require('./app/models');
+process.models = models;
 
 app.use(express.static('public'));
 app.use(cookieParser());
@@ -25,6 +32,19 @@ app.use("/auth", authRoutes);
 app.get("/", (req, res) => {
   res.sendFile(path.resolve(__dirname, './dist/index.html'));
 });
+
+restify();
+app.use('/', baucis());
+
+function restify() {
+  console.log(process.models);
+  Object.keys(process.models).forEach(function(model) {
+    var controller = baucis.rest(process.models[model]);
+    controller.request(bindController);
+    controller.emptyCollection(200);
+  });
+}
+
 app.listen(3000, function(err, result) {
   if(err){
     console.log(err);
@@ -44,3 +64,10 @@ new webpackDevServer(webpack(webpackConfig), {
   }
   console.log("Listening dev server on 3001");
 });
+
+function bindController(req, res, next) {
+  console.log('user', req.user);
+  // TODO: Check if is authenticated == true
+  if(!req.user) return next('unauthorized')
+  next();
+};
