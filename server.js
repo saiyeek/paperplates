@@ -43,12 +43,8 @@ var User = models.User;
 
 process.models = models;
 
-<<<<<<< HEAD
-app.use(express.static('public'));
-=======
 app.use(express.static('assets'));
 app.use(cookieParser());
->>>>>>> 8b4a60375d7da4af180c20d1fb957b6dac7583c8
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 app.use(methodOverride());
