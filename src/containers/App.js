@@ -27,7 +27,7 @@ class App extends React.Component {
         <Header onClickLogin={this.handleUserLogin}/>
           <h1>App Wrapper</h1>
           <Link to="/about">About</Link>
-          <button onClick={()=> this.props.loadUserObject()} > Load User Object</button>
+          <button onClick={()=> this.props.userLoginSuccessful()} > Load User Object</button>
           <div>
           {this.props.children}
           </div>

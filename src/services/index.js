@@ -1,9 +1,12 @@
 import Axios from 'axios';
 
-class UserService {
-  loadUser {
-    Axios.get('/user/me');
-  }
+function UserService() {
+
 }
 
-export UserService;
+UserService.prototype.loadUser = () => {
+  return Axios.get('/me').then((response) => response.data);
+}
+
+
+module.exports.UserService = UserService;
