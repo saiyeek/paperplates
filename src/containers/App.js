@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
-import { requestUserLogin, userLoginSuccessful } from '../actions/userActions'
+import { requestUserLogin, userLoginSuccessful, loadUserObject } from '../actions/userActions'
 import Header from './Header'
 
 class App extends React.Component {
@@ -27,7 +27,7 @@ class App extends React.Component {
         <Header onClickLogin={this.handleUserLogin}/>
           <h1>App Wrapper</h1>
           <Link to="/about">About</Link>
-          <button onClick={()=> this.handleUserLogin()} > Login</button>
+          <button onClick={()=> this.props.loadUserObject()} > Load User Object</button>
           <div>
           {this.props.children}
           </div>
@@ -42,5 +42,6 @@ function mapStateToProps(state, ownProps) {
 }
 export default connect(mapStateToProps, {
   requestUserLogin,
-  userLoginSuccessful
+  userLoginSuccessful,
+  loadUserObject
 })(App);
