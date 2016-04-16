@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
 import { requestUserLogin } from '../actions/userActions'
+import Header from './Header'
 
 class App extends React.Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class App extends React.Component {
   render () {
     return (
       <div>
+        <Header />
           <h1>App Wrapper</h1>
           <Link to="/about">About</Link>
           <button onClick={()=> this.handleUserLogin()} > Login</button>

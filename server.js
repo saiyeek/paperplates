@@ -20,7 +20,7 @@ try {
 var models = require('./app/models');
 process.models = models;
 
-app.use(express.static('public'));
+app.use(express.static('assets'));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
