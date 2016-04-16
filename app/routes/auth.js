@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
-
+var redis = require('redis');
 
 
 router.get('/facebook', passport.authenticate('facebook', { scope: ['public_profile', 'email'] }));

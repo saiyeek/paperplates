@@ -24,7 +24,10 @@ var conn = mongoose.createConnection(MONGO_URI, MONGO_OPTIONS);
 var models = {
 	Menu: require('./menu.js')(conn),
 	User: require('./user.js')(conn),
-	Meal: require('./meal.js')(conn)
+	Meal: require('./meal.js')(conn),
+      Location: require('./location.js')(conn),
+      Rating: require('./rating.js')(conn),
+      Reservation: require('./reservation.js')(conn)
 };
 
 module.exports = models;

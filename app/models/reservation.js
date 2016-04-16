@@ -3,11 +3,9 @@ var ObjectId = mongoose.Schema.Types.ObjectId;
 var Mixed = mongoose.Schema.Types.Mixed;
 
 var schema = new mongoose.Schema({
-    menu: { type: ObjectId, ref: 'menu' },
-	date: Date,
-	available_spots: Number,
-	location: { type: ObjectId, ref: 'location', default: null },
-	reservations: [{ type: ObjectId, ref: 'reservation' }],
+    diner : { type: ObjectId, ref: 'user' },
+    meal: { type: ObjectId, ref: 'meal'},
+    people_count : Number,
 	created: {
 		type: Date,
 		default: Date.now
@@ -17,7 +15,7 @@ var schema = new mongoose.Schema({
 		default: null
 	}
 }, {
- collection: 'Meal',
+ collection: 'Reservation',
  autoIndex: false
 });
 
@@ -27,6 +25,6 @@ schema.pre('save', function(next) {
 });
 
 module.exports = function(conn) {
- conn.model('meal', schema);
- return conn.model('meal');
+ conn.model('reservation', schema);
+ return conn.model('reservation');
 }

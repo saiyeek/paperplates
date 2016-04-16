@@ -27,9 +27,11 @@
     "babel-polyfill": "^6.7.4",
     "baucis": "^1.6.5",
     "body-parser": "^1.15.0",
+    "connect-redis": "^3.0.2",
     "cookie-parser": "^1.4.1",
     "express": "4.12.x",
     "express-session": "^1.13.0",
+    "method-override": "^2.3.5",
     "mongoose": "^4.4.12",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.0",
@@ -38,6 +40,7 @@
     "react-redux": "^4.4.5",
     "react-router": "^2.2.4",
     "react-router-redux": "^4.0.2",
+    "redis": "^2.6.0-1",
     "redux": "^3.4.0",
     "redux-saga": "^0.9.5"
   }
