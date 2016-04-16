@@ -3,7 +3,7 @@ var ObjectId = mongoose.Schema.Types.ObjectId;
 var Mixed = mongoose.Schema.Types.Mixed;
 
 var schema = new mongoose.Schema({
-    user: { type: ObjectId, ref: 'user' },
+    host: { type: ObjectId, ref: 'user' },
     title : String,
     images : [String],
     price : Number,

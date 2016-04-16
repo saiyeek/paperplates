@@ -1,31 +1,24 @@
-
 var mongoose = require('mongoose');
 var ObjectId = mongoose.Schema.Types.ObjectId;
 var Mixed = mongoose.Schema.Types.Mixed;
 
 var schema = new mongoose.Schema({
-  status: String,
-  created: {
-    type: Date,
-    default: Date.now
-  },
-  updated: {
-    type: Date,
-    default: null
-  }
+    email : String,
+    first_name : String,
+    last_name : String,
+    type : { type: String, enum: ['host', 'diner'] },
+    facebook_id : Number
 }, {
-  collection: 'User',
-  autoIndex: false
+ collection: 'User',
+ autoIndex: false
 });
 
 
-schema.pre('save', function(next) {
-  this.updated = new Date();
-  next();
+schema.pre('user', function(next) {
+ next();
 });
 
 module.exports = function(conn) {
-  conn.model('user', schema);
-  return conn.model('user');
+ conn.model('user', schema);
+ return conn.model('user');
 }
-

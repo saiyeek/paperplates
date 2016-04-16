@@ -1,7 +1,7 @@
 
 var mongoose = require('mongoose');
 
-var MONGO_URI = "mongodb://admin:2ApplesPies@ds011231.mlab.com:11231/paper_plate_meals";
+var MONGO_URI = "mongodb://api-user:GuSYSyVAYze4p9aH@ds011231.mlab.com:11231/paper_plate_meals";
 var MONGO_OPTIONS = {
   server: {
     poolSize: 4,

@@ -37,7 +37,6 @@ restify();
 app.use('/', baucis());
 
 function restify() {
-  console.log(process.models);
   Object.keys(process.models).forEach(function(model) {
     var controller = baucis.rest(process.models[model]);
     controller.request(bindController);
@@ -68,6 +67,7 @@ new webpackDevServer(webpack(webpackConfig), {
 function bindController(req, res, next) {
   console.log('user', req.user);
   // TODO: Check if is authenticated == true
-  if(!req.user) return next('unauthorized')
+
+  if(!req.user) return res.status(401).json({error: "Unauthorized"});
   next();
 };
