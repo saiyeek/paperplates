@@ -1,5 +1,6 @@
 import { takeEvery, takeLatest } from 'redux-saga'
 import { call, put } from 'redux-saga/effects'
+import ACTION_TYPES from '../actions/actionTypes'
 
 // worker Saga : will be fired on USER_FETCH_REQUESTED actions
 function* fetchUser(action) {
