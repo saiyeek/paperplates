@@ -1,7 +1,8 @@
 import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
-import { requestUserLogin } from '../actions/userActions'
+import { requestUserLogin, userLoginSuccessful } from '../actions/userActions'
+import Header from './Header'
 
 class App extends React.Component {
   constructor(props) {
@@ -9,13 +10,21 @@ class App extends React.Component {
     this.handleUserLogin = this.handleUserLogin.bind(this)
   }
 
-  handleUserLogin() {
+  fbLoginCallback(success) {
+    this.props.userLoginSuccessful();
+  }
+
+  handleUserLogin(e) {
+    e.preventDefault();
+    let win = window.open('/auth/facebook', "", "width=500,height=400");
+    window.fbLoginCallback = this.fbLoginCallback.bind(this);
     this.props.requestUserLogin();
   }
 
   render () {
     return (
       <div>
+        <Header onClickLogin={this.handleUserLogin}/>
           <h1>App Wrapper</h1>
           <Link to="/about">About</Link>
           <button onClick={()=> this.handleUserLogin()} > Login</button>
@@ -32,5 +41,6 @@ function mapStateToProps(state, ownProps) {
   }
 }
 export default connect(mapStateToProps, {
-  requestUserLogin
+  requestUserLogin,
+  userLoginSuccessful
 })(App);
