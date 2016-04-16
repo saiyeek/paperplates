@@ -84,8 +84,15 @@ function restify() {
 
 app.get('/auth/facebook', passport.authenticate('facebook'));
 app.get('/auth/facebook/callback',
-  passport.authenticate('facebook', { successRedirect: '/loginsuccess/facebook',
-                    failureRedirect: '/'}));
+  passport.authenticate('facebook', { successRedirect: '/auth/facebook/loginSuccess',
+                    failureRedirect: '/auth/facebook/loginFailure'}));
+
+app.get('/auth/facebook/loginSuccess', (req, res) => {
+  res.sendFile(path.resolve(__dirname, './assets/fbCallbackPages/successful.html'));
+})
+app.get('/auth/facebook/loginFailure', (req, res) => {
+  res.sendFile(path.resolve(__dirname, './assets/fbCallbackPages/failure.html'));
+})
 
 function isAuthorized(req){
     if(!req.session || !req.session.passport || !req.session.passport.user) return false;

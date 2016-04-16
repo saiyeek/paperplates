@@ -8,7 +8,13 @@ export function requestUserLogin(){
 
 export function userLoginSuccessful(user) {
   return {
-    type: ACTION_TYPES.USER_LOGIN_SUCCESSFUL,
+    type: ACTION_TYPES.USER_LOGIN_SUCCESSFUL
+  }
+}
+
+export function loadUserObject(user) {
+  return {
+    type: ACTION_TYPES.LOAD_USER,
     user
   }
 }

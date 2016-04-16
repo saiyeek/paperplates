@@ -1,6 +1,8 @@
 
 import { take, call, put } from 'redux-saga/effects'
-import Api from '...'
+import { loadUserObject } from '../actions/userActions'
+import { UserService } from '../services'
+import { ACTION_TYPES } from '../actions/actionTypes'
 
 function* authorize(user, password) {
   try {
@@ -14,12 +16,12 @@ function* authorize(user, password) {
 
 function* loginFlow() {
   while(true) {
-    const {user, password} = yield take('LOGIN_REQUEST')
-    const token = yield call(authorize, user, password)
-    if(token) {
-      yield call(Api.storeItem, {token})
-      yield take('LOGOUT')
-      yield call(Api.clearItem, 'token')
+    yield take(ACTION_TYPES.USER_LOGIN_SUCCESSFUL)
+    try {
+      const user = yield call(UserService.loadUser);
+      yield put(loadUserObject(user));
+    } catch(error) {
+      yield put(userLoginFailure(error));
     }
   }
 }
