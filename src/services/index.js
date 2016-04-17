@@ -11,4 +11,21 @@ UserService.prototype.loadUser = () => {
 UserService.prototype.logoutUser = () => {
   return Axios.post('/logout')
 }
-module.exports.UserService = UserService;
+
+/**
+Menu Service
+*/
+
+function MenuService() {
+}
+
+MenuService.prototype.fetchMenus = () => {
+  return Axios.get('/menus').then(response => response.body)
+}
+
+
+// Export everything
+module.exports = {
+  UserService,
+  MenuService
+}

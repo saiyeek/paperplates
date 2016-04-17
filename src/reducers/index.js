@@ -18,8 +18,17 @@ function appState(state = {}, action) {
   }
   return state;
 }
+
+function menus(state = {}, action ) {
+  switch(action.type) {
+    case "MENU_LOAD_ALL_SUCCESS":
+      return merge({}, action.menus);
+  }
+  return state;
+}
 const rootReducer = combineReducers({
   user,
+  menus,
   appState,
   routing
 })

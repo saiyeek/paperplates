@@ -39,9 +39,6 @@ class App extends React.Component {
           onClickLogin={this.handleUserLogin}
           onClickLogout={this.handleUserLogout}
           />
-          <h1>App Wrapper</h1>
-          <Link to="/about">About</Link>
-          <button onClick={()=> this.props.userLoginSuccessful()} > Load User Object</button>
           <div className="container">
           {this.props.children}
           </div>
