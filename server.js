@@ -1,5 +1,6 @@
 var express = require('express');
 var webpack = require('webpack');
+var zipcodes = require('zipcodes');
 var webpackDevServer = require('webpack-dev-server');
 var webpackConfig = require('./webpack.config.js');
 var path = require('path');
@@ -34,6 +35,7 @@ var baucis = require('baucis');
 var swagger = require('baucis-swagger');
 var models = require('./app/models');
 var User = models.User;
+var Meal = models.Meal;
 process.models = models;
 
 // Express middleware setup
@@ -60,6 +62,28 @@ app.use(passport.initialize());
 app.get("/", (req, res) => {
   res.sendFile(path.resolve(__dirname, './dist/index.html'));
 });
+// give zip and radius range returns a list of menus within that range
+app.get("/zipcode", (req, res) => {
+
+  console.log(req.query["zipcode"]);
+  var zipcode = req.query["zipcode"];
+  var radius = req.query["radius"];
+  var rad = zipcodes.radius(zipcode, radius);
+  console.log(rad)
+
+  Meal.find()
+  .populate({
+    path: 'location',
+    match: { zip: { $in: rad }}
+  })
+  .exec((err, locations ) => {
+    if (err) return handleError(err);
+    console.log(locations);
+    res.end(JSON.stringify(locations));
+  });
+
+});
+
 app.use('/docs', express.static(path.join(__dirname, './assets/swagger/')));
 app.get('/me', function(req, res, next) {
   if (!isAuthorized(req)) return res.status(401).json({
@@ -99,7 +123,7 @@ app.get('/auth/facebook/loginSuccess', (req, res) => {
   }, function(error, doc) {
     if (error) return res.sendFile(path.resolve(__dirname, './assets/fbCallbackPages/successful.html'));
     else if (!doc) {
-      var user = new User({
+      var user = new ({
         first_name: u.name.givenName,
         last_name: u.name.familyName,
         facebook_meta: u,
