@@ -5,6 +5,7 @@ import AboutPage from './containers/AboutPage'
 import Homepage from './containers/Homepage'
 import MyAccountPage from './containers/MyAccountPage'
 import SearchResultContainer from './containers/SearchResultContainer'
+import MealDetailPage from './containers/MealDetailPage'
 
 export default (
   <Route path="/" component={App}>
@@ -12,8 +13,10 @@ export default (
            component={AboutPage} />
     <Route path="/account"
            component={MyAccountPage}/>
-       <Route path="/search/:zipcode"
+    <Route path="/search/:zipcode"
            component={SearchResultContainer} />
-     <IndexRoute component={Homepage} />
+    <Route path="/meals/:mealId"
+           component={MealDetailPage} />
+    <IndexRoute component={Homepage} />
   </Route>
 )
