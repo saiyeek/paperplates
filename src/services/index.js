@@ -43,9 +43,21 @@ MealService.prototype.fetchMeal = (mealId) => {
   return Axios.get('/meals/'+mealId + '?populate=menu location').then(response => response.data);
 }
 
+function ReservationService() {
+
+}
+
+ReservationService.prototype.makeReservation = (dinerId, mealId, people_count) => {
+  return Axios.post('/reservations', {
+    diner: dinerId,
+    meal: mealId,
+    people_count
+  })
+}
 // Export everything
 module.exports = {
   UserService,
   MenuService,
-  MealService
+  MealService,
+  ReservationService
 }
