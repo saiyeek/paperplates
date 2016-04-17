@@ -5,7 +5,7 @@ const MealBox = (props) => {
   console.log(props);
 
   let imageSection =  <div className="col-sm-8 photo-section">
-                        <img src={`${props.menu.images[0]}`} className="food-image" />
+                        <Link to={`/meals/${props._id}`}><img src={`${props.menu.images[0]}`} className="food-image" /></Link>
                       </div>;
 
   let descriptionSection =  <div className="col-sm-4 summary-section">
@@ -23,11 +23,6 @@ const MealBox = (props) => {
                                 <p>
                                   {props.menu.description}
                                 </p>
-                                <div>
-                                  <form action="/charge" method="POST">
-                                    <button type="submit" className="stripe-button-el" style={{visibility: 'visible'}}><span style={{display: 'block', minHeight: 30}}>Pay with Card</span></button>
-                                  </form>
-                                </div>
                               </div>
                             </div>
 
