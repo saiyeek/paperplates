@@ -6,7 +6,6 @@ const MealBox = (props) => {
   return (
     <div className="row entry bgcolor-1">
         <div className="col-sm-8 photo-section">
-        {props._id}
           <img src={`${props.menu.images[0]}`} className="food-image" />
         </div>
         <div className="col-sm-4 summary-section">
