@@ -3,11 +3,15 @@ import { Link } from 'react-router'
 import { connect } from 'react-redux'
 
 const Header = (props) => {
-  console.log(props);
   const { user } = props;
   let userActionButton;
   if(user) {
-    userActionButton = <a href="#"  key="logout" onClick={(e) =>  props.onClickLogout(e)}><i className="fa fa-lock" /> {user.first_name} (Logout)</a>
+    userActionButton = (
+      <div>
+        <Link to="/account" >{user.first_name}</Link>
+        <a href="#"  key="logout" onClick={(e) =>  props.onClickLogout(e)}><i className="fa fa-lock" /> (Logout)</a>
+      </div>
+    )
   } else {
     userActionButton = <a href="#" key="login" onClick={(e) =>  props.onClickLogin(e)}><i className="fa fa-lock" /> Login</a>
   }
@@ -61,6 +65,7 @@ const Header = (props) => {
                     <span className="icon-bar" />
                   </button>
                 </div>
+                {/*
                 <div className="mainmenu pull-left">
                   <ul className="nav navbar-nav collapse navbar-collapse">
                     <li><a href="index.html" className="active">Home</a>
@@ -69,12 +74,15 @@ const Header = (props) => {
                     <li><a href="contact-us.html">Contact</a></li>
                   </ul>
                 </div>
+                */}
               </div>
+              {/*
               <div className="col-sm-3">
                 <div className="search_box pull-right">
                   <input type="text" placeholder="Search" />
                 </div>
               </div>
+              */}
             </div>
           </div>
         </div>{/*/header-bottom*/}

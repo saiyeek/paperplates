@@ -44,3 +44,13 @@ export function isUserLoggedIn() {
     type: ACTION_TYPES.IS_USER_LOGGED_IN
   }
 }
+
+
+
+// User Controls
+export function requestBeHost(userId) {
+  return {
+    type: "USER_BE_HOST_REQUESTED",
+    userId
+  }
+}

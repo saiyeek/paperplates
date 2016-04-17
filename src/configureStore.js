@@ -2,15 +2,22 @@ import { createStore, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 import rootReducer from './reducers'
 import { root } from './sagas/logger'
-import { userSaga } from './sagas/userSaga'
+import { userSaga, userControlsSaga } from './sagas/userSaga'
 import { menuSaga } from './sagas/menuSaga'
+import { mealsSaga, currentMealSaga } from './sagas/mealsSaga'
+import { routerMiddleware } from 'react-router-redux'
+import { hashHistory } from 'react-router'
 
-const sagaMiddleware = createSagaMiddleware(root, userSaga, menuSaga)
-
+const sagaMiddleware = createSagaMiddleware(
+    root, userSaga, userControlsSaga,
+    menuSaga, mealsSaga,
+    currentMealSaga
+  )
+const routeMiddleware = routerMiddleware(hashHistory);
 export default function configureStore(initialState) {
   return createStore(
     rootReducer,
     initialState,
-    applyMiddleware(sagaMiddleware)
+    applyMiddleware(sagaMiddleware,routeMiddleware)
   )
 }
