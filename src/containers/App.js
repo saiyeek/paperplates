@@ -42,7 +42,7 @@ class App extends React.Component {
           <h1>App Wrapper</h1>
           <Link to="/about">About</Link>
           <button onClick={()=> this.props.userLoginSuccessful()} > Load User Object</button>
-          <div>
+          <div className="container">
           {this.props.children}
           </div>
       </div>
