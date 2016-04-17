@@ -1,11 +1,20 @@
 import React, { PropTypes } from 'react'
+import { connect } from 'react-redux'
+import MenuItem from './MenuItem'
 
 const MealDetail = (props) => {
+  console.log(props)
+  let menuItemElements = [];
+  if(props.menu.items){
+    menuItemElements = props.menu.items.map(function(item) {
+      return <MenuItem {...item} />
+    })
+  }
   return (
     <div className="row">
         <div className="col-sm-3">&nbsp;</div>
         <div className="col-sm-6 menu-detail center">
-          <div className="header3">Tastebud euphoria</div>
+          <div className="header3">{props.title}</div>
           <div>
             <img src="http://www.museumreplicas.com/images/reviewstarsmall.png" />
             <img src="http://www.museumreplicas.com/images/reviewstarsmall.png" />
@@ -17,19 +26,11 @@ const MealDetail = (props) => {
             <img src="https://dl.dropboxusercontent.com/u/36999182/paperplatemeals/photo-1426869884541-df7117556757.jpeg" className="food-image" />
           </div>
           <p className="menu-description">
-            Tenderloin prosciutto landjaeger bresaola tail pork pork loin beef ribs jerky pig beef flank rump drumstick. Venison ham hock short loin beef bacon tail sausage.<br /><br />
-            Kielbasa shoulder jowl, beef ribs leberkas salami sirloin chicken short loin venison chuck ribeye tail. Alcatra rump pastrami, doner ham ham hock jowl cow kielbasa. Meatball flank pastrami bacon.
+            {props.menu.description}
           </p>
           <div className="header4 vspace40">Things on the menu</div>
           <div className="menu-items vspace10">
-            <div className="menu-item">
-              <p className="menu-item-title header5">Cupcakes</p>
-              <p className="menu-item-ingredient">Chocolate, Cocoa, Cream</p>
-            </div>
-            <div className="menu-item">
-              <p className="menu-item-title header5">Drinks</p>
-              <p className="menu-item-ingredient">Option of hot chocolate, coffee and tea</p>
-            </div>
+            {menuItemElements}
           </div>
           <div className="booking-section vspace40">
             <div className="header4">Reserve now</div>
@@ -55,4 +56,4 @@ const MealDetail = (props) => {
   )
 }
 
-export default MealDetail
+export default MealDetail;

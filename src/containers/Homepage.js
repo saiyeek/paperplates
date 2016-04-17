@@ -17,7 +17,7 @@ class Homepage extends React.Component {
   }
 
   _handleKeyPress(e) {
-    if(e.key== 'Enter') {
+    if(e.key== 'Enter' && e.target.value.length > 0) {
       this.props.push('search/'+ e.target.value);
     }
   }

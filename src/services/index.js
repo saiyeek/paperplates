@@ -24,7 +24,7 @@ function MenuService() {
 }
 
 MenuService.prototype.fetchMenus = () => {
-  return Axios.get('/menus?populate=menu').then(response => response.body)
+  return Axios.get('/menus?populate=menu').then(response => response.data)
 }
 
 
@@ -39,6 +39,9 @@ MealService.prototype.fetchMeals = () => {
   return Axios.get('/meals?populate=menu reservations').then(response => response.data)
 }
 
+MealService.prototype.fetchMeal = (mealId) => {
+  return Axios.get('/meals/'+mealId + '?populate=menu location').then(response => response.data);
+}
 
 // Export everything
 module.exports = {
