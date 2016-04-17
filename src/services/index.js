@@ -24,7 +24,7 @@ function MenuService() {
 }
 
 MenuService.prototype.fetchMenus = () => {
-  return Axios.get('/menus').then(response => response.body)
+  return Axios.get('/menus?populate=menu').then(response => response.body)
 }
 
 
