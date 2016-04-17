@@ -9,6 +9,6 @@ UserService.prototype.loadUser = () => {
 }
 
 UserService.prototype.logoutUser = () => {
-  return Axios.post('/auth/logout')
+  return Axios.post('/logout')
 }
 module.exports.UserService = UserService;

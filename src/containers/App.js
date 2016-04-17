@@ -11,6 +11,9 @@ class App extends React.Component {
     this.handleUserLogout = this.handleUserLogout.bind(this)
   }
 
+  componentWillMount() {
+    
+  }
   fbLoginCallback(success) {
     this.props.userLoginSuccessful();
   }

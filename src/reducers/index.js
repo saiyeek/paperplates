@@ -7,7 +7,7 @@ function user(state = null, action ){
   switch(action.type) {
     case ACTION_TYPES.LOAD_USER:
       return merge({}, action.user);
-    case ACTION_TYPES.LOGOUT_USER:
+    case ACTION_TYPES.USER_LOGOUT_SUCCESSFUL:
       return null;
   }
   return state;
