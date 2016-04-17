@@ -3,7 +3,6 @@ import { Link } from 'react-router'
 import { connect } from 'react-redux'
 
 const Header = (props) => {
-  console.log(props);
   const { user } = props;
   let userActionButton;
   if(user) {

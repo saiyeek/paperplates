@@ -26,9 +26,21 @@ function menus(state = {}, action ) {
   }
   return state;
 }
+
+function meals(state = [], action) {
+  console.log(action);
+  switch(action.type) {
+    case "MEALS_LOAD_ALL_SUCCESS":
+      return action.meals;
+  }
+  return state;
+}
+
+
 const rootReducer = combineReducers({
   user,
   menus,
+  meals,
   appState,
   routing
 })

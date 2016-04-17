@@ -36,7 +36,7 @@ function MealService() {
 }
 
 MealService.prototype.fetchMeals = () => {
-  return Axios.get('/meals').then(response => response.body)
+  return Axios.get('/meals?populate=menu reservations').then(response => response.data)
 }
 
 
