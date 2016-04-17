@@ -1,7 +1,16 @@
 import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
+import { connect } from 'react-redux'
 
 const Header = (props) => {
+  console.log(props);
+  const { user } = props;
+  let userActionButton;
+  if(user) {
+    userActionButton = <a href="#"  key="logout" onClick={(e) =>  props.onClickLogout(e)}><i className="fa fa-lock" /> {user.first_name} (Logout)</a>
+  } else {
+    userActionButton = <a href="#" key="login" onClick={(e) =>  props.onClickLogin(e)}><i className="fa fa-lock" /> Login</a>
+  }
   return (
     <header id="header">{/*header*/}
         <div className="header_top">{/*header_top*/}
@@ -33,7 +42,7 @@ const Header = (props) => {
               <div className="col-sm-8">
                 <div className="shop-menu pull-right">
                   <ul className="nav navbar-nav">
-                    <li><a href="#" onClick={(e) =>  props.onClickLogin(e)}><i className="fa fa-lock" /> Login</a></li>
+                    <li>{userActionButton}</li>
                   </ul>
                 </div>
               </div>
@@ -73,4 +82,10 @@ const Header = (props) => {
   )
 }
 
-export default Header
+function mapStateToProps(store, ownProps) {
+  return {
+    user: store.user
+  }
+}
+
+export default  connect(mapStateToProps, {})(Header)
