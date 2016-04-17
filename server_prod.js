@@ -10,8 +10,8 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 var app = express();
 passport.use(new FacebookStrategy({
     //Get this information from your app's page on developers.facebook.com
-    clientID: '1688464571421592',
-    clientSecret: '372f84078e663316511bdc223caa2b34',
+    clientID: '1733693790176429',
+    clientSecret: 'aa19e4e46dc542954b1184eea7f5fe37',
     callbackURL: '/auth/facebook/callback',
     profileFields: ['id', 'emails', 'name', 'gender', 'link', 'picture']
 
