@@ -7,7 +7,7 @@ const HomePageSearchBox = (props) => {
           <div className="search-title">We are in Seattle!</div>
           <div className="search-description">We have food lovers hosting lunch/dinner in Seattle. Wanna dine out at their place?</div>
           <div className="search-bar">
-            <input type="text" id="search-zip" placeholder="Search by zipcode. Eg. 98007" />
+            {props.children}
           </div>
         </center>
       </div>
