@@ -7,7 +7,12 @@ const Header = (props) => {
   const { user } = props;
   let userActionButton;
   if(user) {
-    userActionButton = <a href="#"  key="logout" onClick={(e) =>  props.onClickLogout(e)}><i className="fa fa-lock" /> {user.first_name} (Logout)</a>
+    userActionButton = (
+      <div>
+        <Link to="/account" >{user.first_name}</Link>
+        <a href="#"  key="logout" onClick={(e) =>  props.onClickLogout(e)}><i className="fa fa-lock" /> (Logout)</a>
+      </div>
+    )
   } else {
     userActionButton = <a href="#" key="login" onClick={(e) =>  props.onClickLogin(e)}><i className="fa fa-lock" /> Login</a>
   }

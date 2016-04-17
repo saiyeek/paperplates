@@ -1,4 +1,4 @@
-
+import { takeEvery } from 'redux-saga'
 import { take, call, put } from 'redux-saga/effects'
 import { loadUserObject, userLogoutSuccessful } from '../actions/userActions'
 import { UserService } from '../services'
@@ -23,4 +23,19 @@ export function* userSaga() {
       console.log(error);
     }
   }
+}
+
+function* userBeHost(action) {
+  try {
+    const user = yield call(userService.beHost, action.userId)
+    yield put({type: "USER_BE_HOST_SUCCESSFUL"})
+    yield put(loadUserObject(user))
+  } catch(e) {
+    yield put({
+      type: "USER_BE_HOST_FAILED", message: e.message
+    });
+  }
+}
+export function* userControlsSaga() {
+  yield* takeEvery("USER_BE_HOST_REQUESTED", userBeHost);
 }

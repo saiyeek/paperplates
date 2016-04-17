@@ -12,6 +12,10 @@ UserService.prototype.logoutUser = () => {
   return Axios.post('/logout')
 }
 
+UserService.prototype.beHost = (userId) => {
+  return Axios.put(`/users/${userId}`, {type: "host"})
+  .then(response => response.data)
+}
 /**
 Menu Service
 */
@@ -24,8 +28,21 @@ MenuService.prototype.fetchMenus = () => {
 }
 
 
+/**
+Menu Service
+*/
+
+function MealService() {
+}
+
+MealService.prototype.fetchMeals = () => {
+  return Axios.get('/meals').then(response => response.body)
+}
+
+
 // Export everything
 module.exports = {
   UserService,
-  MenuService
+  MenuService,
+  MealService
 }
