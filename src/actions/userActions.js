@@ -25,3 +25,15 @@ export function userLoginFailure(err) {
     error: err
   }
 }
+
+export function requestUserLogout() {
+  return {
+    type: ACTION_TYPES.REQUEST_USER_LOGOUT
+  }
+}
+
+export function userLogoutSuccessful() {
+  return {
+    type: ACTION_TYPES.USER_LOGOUT_SUCCESSFUL
+  }
+}
