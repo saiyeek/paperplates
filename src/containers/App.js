@@ -12,7 +12,7 @@ class App extends React.Component {
   }
 
   componentWillMount() {
-    
+    this.props.userLoginSuccessful();
   }
   fbLoginCallback(success) {
     this.props.userLoginSuccessful();

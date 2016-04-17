@@ -37,3 +37,10 @@ export function userLogoutSuccessful() {
     type: ACTION_TYPES.USER_LOGOUT_SUCCESSFUL
   }
 }
+
+
+export function isUserLoggedIn() {
+  return {
+    type: ACTION_TYPES.IS_USER_LOGGED_IN
+  }
+}
