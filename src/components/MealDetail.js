@@ -34,9 +34,9 @@ const MealDetail = (props) => {
           </div>
           <div className="booking-section vspace40">
             <div className="header4">Reserve now</div>
-            <div>Price: USD 59/person</div>
-            <div>Date: Apr 21st, 2016</div>
-            <div>Time: 7:30pm</div>
+            <div>Price: USD {(props.menu.price / 100).toFixed(2)}/person</div>
+            <div>Date: {new Date(props.date).toDateString()}</div>
+            <div>Time: {new Date(props.date).toLocaleTimeString()}</div>
             <div>Guest Count
               <select>
                 <option value={1}>1</option>

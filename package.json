@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "axios": "^0.9.1",
+    "babel-plugin-transform-class-properties": "^6.6.0",
     "babel-polyfill": "^6.7.4",
     "baucis": "^1.6.5",
     "baucis-swagger": "^1.1.2",
