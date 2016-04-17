@@ -4,6 +4,7 @@ var Mixed = mongoose.Schema.Types.Mixed;
 
 var schema = new mongoose.Schema({
     menu: { type: ObjectId, ref: 'menu' },
+	title: String,
 	date: Date,
 	available_spots: Number,
 	location: { type: ObjectId, ref: 'location', default: null },

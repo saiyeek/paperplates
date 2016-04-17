@@ -10,7 +10,7 @@ const MealBox = (props) => {
         </div>
         <div className="col-sm-4 summary-section">
           <div className="summary">
-            <div className="summary-title"><Link to={`/meals/${props._id}`}>{props.menu.title}</Link></div>
+            <div className="summary-title"><Link to={`/meals/${props._id}`}>{props.title}</Link></div>
             <div className="rating">
               <img src="http://www.museumreplicas.com/images/reviewstarsmall.png" />
               <img src="http://www.museumreplicas.com/images/reviewstarsmall.png" />
