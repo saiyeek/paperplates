@@ -17,3 +17,12 @@ export function clearLoadedMeal() {
     type: "CLEAR_LOADED_MEAL"
   }
 }
+
+export function makeReservationRequest(mealId, people_count, userId) {
+  return {
+    type: "MAKE_RESERVATION_REQUEST",
+    mealId,
+    people_count,
+    userId
+  }
+}

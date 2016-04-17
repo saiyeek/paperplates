@@ -47,12 +47,12 @@ function ReservationService() {
 
 }
 
-ReservationService.prototype.makeReservation = (dinerId, mealId, people_count) => {
+ReservationService.prototype.makeReservation = ( mealId, people_count, dinerId) => {
   return Axios.post('/reservations', {
     diner: dinerId,
     meal: mealId,
     people_count
-  })
+  }).then(response => response.data)
 }
 // Export everything
 module.exports = {

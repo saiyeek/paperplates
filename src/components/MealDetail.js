@@ -4,10 +4,11 @@ import MenuItem from './MenuItem'
 
 const MealDetail = (props) => {
   console.log(props)
+  const { handleMakeRervationClicked, handlePeopleCountChange } = props
   let menuItemElements = [];
   if(props.menu.items){
-    menuItemElements = props.menu.items.map(function(item) {
-      return <MenuItem {...item} />
+    menuItemElements = props.menu.items.map(function(item, i) {
+      return <MenuItem {...item} key={i}/>
     })
   }
   return (
@@ -38,7 +39,7 @@ const MealDetail = (props) => {
             <div>Date: {new Date(props.date).toDateString()}</div>
             <div>Time: {new Date(props.date).toLocaleTimeString()}</div>
             <div>Guest Count
-              <select>
+              <select onChange={handlePeopleCountChange}>
                 <option value={1}>1</option>
                 <option value={2}>2</option>
                 <option value={3}>3</option>
@@ -47,7 +48,7 @@ const MealDetail = (props) => {
               </select>
             </div>
             <div className="vspace20">
-              <button>Make a reservation</button>
+              <button onClick={() => handleMakeRervationClicked(props._id)}>Make a reservation</button>
             </div>
           </div>
         </div>
