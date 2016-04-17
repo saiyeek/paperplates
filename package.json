@@ -26,6 +26,7 @@
     "axios": "^0.9.1",
     "babel-polyfill": "^6.7.4",
     "baucis": "^1.6.5",
+    "baucis-swagger": "^1.1.2",
     "body-parser": "^1.15.0",
     "connect-redis": "^3.0.2",
     "cookie-parser": "^1.4.1",

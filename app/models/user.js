@@ -10,6 +10,7 @@ var schema = new mongoose.Schema({
         type: String,
         enum: ['host', 'diner']
     },
+    facebook_meta: Mixed,
     facebook_id: String,
     twitter_id: String,
     created: {

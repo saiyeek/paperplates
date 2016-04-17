@@ -31,6 +31,7 @@ passport.deserializeUser(function(id, done) {
 });
 
 var baucis = require('baucis');
+var swagger = require('baucis-swagger');
 var models = require('./app/models');
 var User = models.User;
 process.models = models;
@@ -59,6 +60,7 @@ app.use(passport.initialize());
 app.get("/", (req, res) => {
   res.sendFile(path.resolve(__dirname, './dist/index.html'));
 });
+app.use('/docs', express.static(path.join(__dirname, './assets/swagger/')));
 app.get('/me', function(req, res, next) {
   if (!isAuthorized(req)) return res.status(401).json({
     error: "Unauthorized"
@@ -87,37 +89,36 @@ app.get('/auth/facebook/callback',
     failureRedirect: '/auth/facebook/loginFailure'
   }));
 app.get('/auth/facebook/loginSuccess', (req, res) => {
-  res.sendFile(path.resolve(__dirname, './assets/fbCallbackPages/successful.html'));
-});
-app.get('/auth/facebook/loginFailure', (req, res) => {
-  res.sendFile(path.resolve(__dirname, './assets/fbCallbackPages/failure.html'));
-})
-app.get('/loginsuccess/facebook', function(req, res, next) {
   if (!req.session || !req.session.passport || !req.session.passport.user) return res.status(401).json({
     error: "Unauthorized"
   });
   var u = req.session.passport.user;
+  console.log(u)
   User.findOne({
     facebook_id: u.id
   }, function(error, doc) {
-    if (error) return next('mongodb-query-error');
+    if (error) return res.sendFile(path.resolve(__dirname, './assets/fbCallbackPages/successful.html'));
     else if (!doc) {
       var user = new User({
-        first_name: u.displayName.split(' ')[0],
-        last_name: u.displayName.split(' ')[1],
+        first_name: u.name.givenName,
+        last_name: u.name.familyName,
+        facebook_meta: u,
         facebook_id: u.id
       })
       user.save(function(error, newuser) {
         console.log(error)
-        if (error || !newuser) return next('mongodb-save-error');
+        if (error || !newuser) return res.sendFile(path.resolve(__dirname, './assets/fbCallbackPages/successful.html'));
         req._user = newuser;
-        return next();
+        return res.sendFile(path.resolve(__dirname, './assets/fbCallbackPages/successful.html'));
       })
     } else {
-      next();
+      res.sendFile(path.resolve(__dirname, './assets/fbCallbackPages/successful.html'));
     }
   })
 });
+app.get('/auth/facebook/loginFailure', (req, res) => {
+  res.sendFile(path.resolve(__dirname, './assets/fbCallbackPages/failure.html'));
+})
 
 app.listen(3000, function(err, result) {
   if (err) {
