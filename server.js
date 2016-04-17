@@ -76,6 +76,7 @@ app.get("/zipcode", (req, res) => {
     path: 'location',
     match: { zip: { $in: rad }}
   })
+  .populate("menu")
   .exec((err, locations ) => {
     if (err) return handleError(err);
     console.log(locations);
