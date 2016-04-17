@@ -10,8 +10,9 @@ class SearchResultContainer extends React.Component {
   render () {
     const { meals } = this.props;
     let mealsListElems;
+    let count = 0;
     if(meals){
-      mealsListElems = meals.map(meal => <MealBox {...meal} key={meal._id} />)
+      mealsListElems = meals.map(meal => <MealBox {...meal} count={count++} key={meal._id} />)
     }
     return meals
           ? (
