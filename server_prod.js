@@ -117,7 +117,7 @@ app.get('/auth/facebook/loginFailure', (req, res) => {
   res.sendFile(path.resolve(__dirname, './assets/fbCallbackPages/failure.html'));
 })
 
-app.listen(3000, function(err, result) {
+app.listen(80, function(err, result) {
   if (err) {
     console.log(err);
   }
