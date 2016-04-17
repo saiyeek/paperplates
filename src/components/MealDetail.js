@@ -23,7 +23,7 @@ const MealDetail = (props) => {
             <img src="http://www.museumreplicas.com/images/reviewstarsmallempty.png" />
           </div>
           <div className="photo-section">
-            <img src="https://dl.dropboxusercontent.com/u/36999182/paperplatemeals/photo-1426869884541-df7117556757.jpeg" className="food-image" />
+            <img src={`${props.menu.images[0]}`} className="food-image" />
           </div>
           <p className="menu-description">
             {props.menu.description}
