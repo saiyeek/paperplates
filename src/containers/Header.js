@@ -66,6 +66,7 @@ const Header = (props) => {
                     <span className="icon-bar" />
                   </button>
                 </div>
+                {/*
                 <div className="mainmenu pull-left">
                   <ul className="nav navbar-nav collapse navbar-collapse">
                     <li><a href="index.html" className="active">Home</a>
@@ -74,12 +75,15 @@ const Header = (props) => {
                     <li><a href="contact-us.html">Contact</a></li>
                   </ul>
                 </div>
+                */}
               </div>
+              {/*
               <div className="col-sm-3">
                 <div className="search_box pull-right">
                   <input type="text" placeholder="Search" />
                 </div>
               </div>
+              */}
             </div>
           </div>
         </div>{/*/header-bottom*/}
