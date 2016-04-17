@@ -18,6 +18,8 @@ const MealBox = (props) => {
                                   <img src="http://www.museumreplicas.com/images/reviewstarsmall.png" />
                                   <img src="http://www.museumreplicas.com/images/reviewstarsmallempty.png" />
                                 </div>
+                                <div><b>Date</b>: {new Date(props.date).toDateString()}</div>
+                                <div><b>Time</b>: {new Date(props.date).toLocaleTimeString()}</div>
                                 <p>
                                   {props.menu.description}
                                 </p>
